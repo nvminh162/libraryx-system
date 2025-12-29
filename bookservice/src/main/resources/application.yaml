@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:h2:mem:bookdb
     username: sa
-    password: password # Có thể bỏ để quá trình login nhanh hơn
+    password: # Có thể bỏ để quá trình login nhanh hơn
     driverClassName: org.h2.Driver # http://localhost:9001/h2-console
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
