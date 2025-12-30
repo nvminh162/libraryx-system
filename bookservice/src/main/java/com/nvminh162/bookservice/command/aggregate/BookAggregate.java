@@ -1,7 +1,11 @@
 package com.nvminh162.bookservice.command.aggregate;
 
 import com.nvminh162.bookservice.command.command.CreateBookCommand;
+import com.nvminh162.bookservice.command.command.DeleteBookCommand;
+import com.nvminh162.bookservice.command.command.UpdateBookCommand;
 import com.nvminh162.bookservice.command.event.BookCreatedEvent;
+import com.nvminh162.bookservice.command.event.BookDeletedEvent;
+import com.nvminh162.bookservice.command.event.BookUpdatedEvent;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -31,7 +35,21 @@ public class BookAggregate {
     public BookAggregate(CreateBookCommand command) { // hàm khởi tạo có tham số => mục đích giúp cho app nhận biết Book Aggreate được init => nếu k có hàm này sẽ Exception
         BookCreatedEvent event = new BookCreatedEvent();
         BeanUtils.copyProperties(command, event); // Cách này thay vì gắn từng field => Copy tất cả dữ liệu thuộc tính của Object truyền vào tới Object đích
-        AggregateLifecycle.apply(event); // đối tượng vòng đồi của Aggreate với method apply() để public event
+        AggregateLifecycle.apply(event); // dispatch event => đối tượng vòng đời của Aggreate với method apply() để public event
+    }
+
+    @CommandHandler
+    public void handle(UpdateBookCommand command) {
+        BookUpdatedEvent event = new BookUpdatedEvent();
+        BeanUtils.copyProperties(command, event);
+        AggregateLifecycle.apply(event);
+    }
+
+    @CommandHandler
+    public void handle(DeleteBookCommand command) {
+        BookDeletedEvent event = new BookDeletedEvent();
+        BeanUtils.copyProperties(command, event);
+        AggregateLifecycle.apply(event);
     }
 
     // Lắng nghe event vừa public
@@ -43,5 +61,18 @@ public class BookAggregate {
         this.name = event.getName();
         this.author = event.getAuthor();
         this.isReady = event.getIsReady();
+    }
+
+    @EventSourcingHandler
+    public void on(BookUpdatedEvent event) {
+        this.id = event.getId();
+        this.name = event.getName();
+        this.author = event.getAuthor();
+        this.isReady = event.getIsReady();
+    }
+
+    @EventSourcingHandler
+    public void on(BookDeletedEvent event) {
+        this.id = event.getId();
     }
 }
