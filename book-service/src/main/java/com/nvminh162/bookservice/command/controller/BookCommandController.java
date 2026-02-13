@@ -27,7 +27,7 @@ public class BookCommandController {
                 .id(UUID.randomUUID().toString())
                 .name(model.getName())
                 .author(model.getAuthor())
-                .isReady(model.getIsReady())
+                .isReady(true)
                 .build();
         return commandGateway.sendAndWait(command);
     }
