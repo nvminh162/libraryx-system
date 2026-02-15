@@ -4,6 +4,7 @@ import com.nvminh162.bookservice.command.command.CreateBookCommand;
 import com.nvminh162.bookservice.command.command.DeleteBookCommand;
 import com.nvminh162.bookservice.command.command.UpdateBookCommand;
 import com.nvminh162.bookservice.command.model.BookRequestModel;
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -21,7 +22,7 @@ public class BookCommandController {
     CommandGateway commandGateway;
 
     @PostMapping
-    public String addBook(@RequestBody BookRequestModel model) {
+    public String addBook(@Valid @RequestBody BookRequestModel model) {
         CreateBookCommand command = CreateBookCommand.builder()
                 .id(UUID.randomUUID().toString())
                 .name(model.getName())
