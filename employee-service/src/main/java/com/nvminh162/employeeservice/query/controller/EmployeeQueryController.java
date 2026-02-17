@@ -2,7 +2,6 @@ package com.nvminh162.employeeservice.query.controller;
 
 import java.util.List;
 
-import org.axonframework.messaging.responsetypes.ResponseType;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +16,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -27,9 +27,10 @@ public class EmployeeQueryController {
     QueryGateway queryGateway;
 
     @GetMapping
-    public List<EmployeeResponseModel> getAllEmployees() {
-        GetAllEmployeeQuery query = new GetAllEmployeeQuery();
-        return queryGateway.query(query, ResponseTypes.multipleInstancesOf(EmployeeResponseModel.class)).join();
+    public List<EmployeeResponseModel> getAllEmployees(
+            @RequestParam(required = false, defaultValue = "false") Boolean isDisciplined) {
+        return queryGateway.query(new GetAllEmployeeQuery(isDisciplined),
+                ResponseTypes.multipleInstancesOf(EmployeeResponseModel.class)).join();
     }
 
     @GetMapping("/{employeeId}")

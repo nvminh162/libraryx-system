@@ -25,7 +25,7 @@ public class EmployeeProjection {
 
     @QueryHandler
     public List<EmployeeResponseModel> handle(GetAllEmployeeQuery query) {
-        return employeeRepository.findAll().stream().map(employee -> {
+        return employeeRepository.findByIsDisciplined(query.getIsDisciplined()).stream().map(employee -> {
             EmployeeResponseModel model = new EmployeeResponseModel();
             BeanUtils.copyProperties(employee, model);
             return model;
