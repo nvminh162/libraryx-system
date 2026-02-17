@@ -12,6 +12,7 @@ import com.nvminh162.employeeservice.command.command.UpdateEmployeeCommand;
 import com.nvminh162.employeeservice.command.model.CreateEmployeeModel;
 import com.nvminh162.employeeservice.command.model.UpdateEmployeeModel;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +31,7 @@ public class EmployeeCommandController {
     CommandGateway commandGateway;
 
     @PostMapping
-    public String addEmployee(@RequestBody CreateEmployeeModel model) {
+    public String addEmployee(@Valid @RequestBody CreateEmployeeModel model) {
         CreateEmployeeCommand command = CreateEmployeeCommand.builder()
             .id(UUID.randomUUID().toString())
             .firstName(model.getFirstName())
@@ -42,7 +43,7 @@ public class EmployeeCommandController {
     }
 
     @PutMapping("/{employeeId}")
-    public String updateEmployee(@RequestBody UpdateEmployeeModel model, @PathVariable String employeeId) {
+    public String updateEmployee(@Valid @RequestBody UpdateEmployeeModel model, @PathVariable String employeeId) {
         UpdateEmployeeCommand command = UpdateEmployeeCommand.builder()
             .id(employeeId)
             .firstName(model.getFirstName())
