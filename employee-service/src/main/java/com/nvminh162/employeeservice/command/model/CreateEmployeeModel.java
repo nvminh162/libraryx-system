@@ -14,6 +14,6 @@ import lombok.Setter;
 public class CreateEmployeeModel {
     String firstName;
     String lastName;
-    String Kin;
+    String kin;
     Boolean isDisciplined;
 }

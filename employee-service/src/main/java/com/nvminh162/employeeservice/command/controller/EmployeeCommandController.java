@@ -28,7 +28,7 @@ public class EmployeeCommandController {
             .id(UUID.randomUUID().toString())
             .firstName(model.getFirstName())
             .lastName(model.getLastName())
-            .Kin(model.getKin())
+            .kin(model.getKin())
             .isDisciplined(false)
             .build();
         return commandGateway.sendAndWait(command);

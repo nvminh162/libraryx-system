@@ -18,6 +18,6 @@ public class EmployeeCreatedEvent {
     String id;
     String firstName;
     String lastName;
-    String Kin;
+    String kin;
     Boolean isDisciplined;
 }

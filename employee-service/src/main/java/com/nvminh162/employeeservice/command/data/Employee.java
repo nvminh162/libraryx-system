@@ -25,6 +25,6 @@ public class Employee {
     String id;
     String firstName;
     String lastName;
-    String Kin;
+    String kin;
     Boolean isDisciplined;
 }

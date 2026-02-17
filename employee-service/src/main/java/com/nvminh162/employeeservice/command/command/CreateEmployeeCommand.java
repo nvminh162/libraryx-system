@@ -22,6 +22,6 @@ public class CreateEmployeeCommand {
     String id;
     String firstName;
     String lastName;
-    String Kin;
+    String kin;
     Boolean isDisciplined;
 }
