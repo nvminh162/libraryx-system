@@ -16,6 +16,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,27 +28,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/employees")
 @Tag(name = "Employee Query")
+@Slf4j
 public class EmployeeQueryController {
 
     QueryGateway queryGateway;
 
-    @Operation(
-        summary = "Get list employee",
-        description = "Get endpoint for employee with filter",
-        responses = {
-            @ApiResponse(
-                description = "Success",
-                responseCode = "200"
-            ),
-            @ApiResponse(
-                responseCode = "401",
-                description = "Unauthorized / Invalid token"
-            )
-        }
-    )
+    @Operation(summary = "Get list employee", description = "Get endpoint for employee with filter", responses = {
+            @ApiResponse(description = "Success", responseCode = "200"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized / Invalid token")
+    })
     @GetMapping
     public List<EmployeeResponseModel> getAllEmployees(
             @RequestParam(required = false, defaultValue = "false") Boolean isDisciplined) {
+        log.info("CALL: getAllEmployees");
         return queryGateway.query(new GetAllEmployeeQuery(isDisciplined),
                 ResponseTypes.multipleInstancesOf(EmployeeResponseModel.class)).join();
     }
