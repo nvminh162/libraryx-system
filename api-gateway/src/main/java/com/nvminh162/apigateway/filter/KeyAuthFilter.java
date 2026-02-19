@@ -34,9 +34,6 @@ public class KeyAuthFilter extends AbstractGatewayFilterFactory<KeyAuthFilter.Co
 
             String key = exchange.getRequest().getHeaders().get("apiKey").get(0);
 
-            System.out.println(key);
-            System.out.println(apiKey);
-
             if (!key.equals(apiKey)) {
                 return handleException(exchange, "Invalid API key token", HttpStatus.FORBIDDEN);
             }
