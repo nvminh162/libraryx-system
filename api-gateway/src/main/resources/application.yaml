@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: api-gateway # Tên của service, dùng để đăng ký với Eureka Server
+  data:
+    redis:
+      port: 6379 # Cổng mặc định của Redis, đảm bảo rằng Redis đang chạy trên cổng này
+      host: localhost # Địa chỉ của Redis, nếu Redis chạy trên máy khác, thay
   cloud:
     gateway:
       discovery:
@@ -14,6 +18,12 @@ spring:
           uri: lb://employee-service # Sử dụng load balancer để định tuyến đến Employee Service, "employee-service" là tên của service đã đăng ký với Eureka Server
           predicates:
             - Path=/api/v1/employees/** # Định nghĩa đường dẫn mà API Gateway sẽ chuyển tiếp đến Employee Service
+          filters:
+            - name: RequestRateLimiter # Sử dụng filter để giới hạn tốc độ truy cập
+              args:
+                redis-rate-limiter.replenishRate: 10 # Số lượng token được thêm vào bucket mỗi giây
+                redis-rate-limiter.burstCapacity: 20 # Số lượng token tối đa trong bucket (sức chứa của bucket)
+                redis-rate-limiter.requestedTokens: 1 # Số lượng token cần thiết để xử lý một yêu cầu
 
 eureka:
   instance:
