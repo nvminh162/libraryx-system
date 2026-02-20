@@ -4,14 +4,18 @@ import com.nvminh162.bookservice.command.command.CreateBookCommand;
 import com.nvminh162.bookservice.command.command.DeleteBookCommand;
 import com.nvminh162.bookservice.command.command.UpdateBookCommand;
 import com.nvminh162.bookservice.command.model.BookRequestModel;
+import com.nvminh162.commonservice.service.KafkaService;
+
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -50,4 +54,13 @@ public class BookCommandController {
                 .build();
         return commandGateway.sendAndWait(command);
     }
+
+    @Autowired
+    private KafkaService kafkaService;
+
+    @PostMapping("/sendMessage")
+    public void sendMessage(@RequestBody String message) {
+        kafkaService.sendMessage("test", message);
+    }
+    
 }

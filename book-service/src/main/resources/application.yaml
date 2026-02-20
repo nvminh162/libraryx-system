@@ -28,4 +28,3 @@ axon:
   axonserver:
     enabled: true
     servers: localhost:8124
-
