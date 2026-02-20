@@ -4,8 +4,3 @@ server:
 spring:
   application:
     name: notification-service
-  # kafka:
-  #   bootstrap-servers: localhost:9092
-  #   consumer:
-  #     group-id: default-group
-  #     auto-offset-reset: earliest
