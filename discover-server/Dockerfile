@@ -6,8 +6,8 @@
 FROM maven:3.9.12-eclipse-temurin-21 AS build
 # Đặt thư mục làm việc trong container là /app
 WORKDIR /app
-# Sao chép toàn bộ mã nguồn từ build context (thư mục hiện tại) vào /app/discover-server trong container
-COPY . ./discover-server
+# Sao chép mã nguồn của discover-server từ thư mục gốc dự án (build context) vào container
+COPY ./discover-server ./discover-server
 # Chuyển vào thư mục dự án discover-server để thực hiện build
 WORKDIR /app/discover-server
 # Chạy lệnh Maven để build ứng dụng, bỏ qua việc chạy test để tăng tốc độ build
