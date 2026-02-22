@@ -61,7 +61,15 @@ public class BorrowingSaga {
     @SagaEventHandler(associationProperty = "bookId")
     private void handle(BookUpdatedStatusEvent event) {
         log.info("(i) >>>>>>>>> Book updated status event in saga for BookId: {}", event.getBookId());
-        SagaLifecycle.end();
+        
+        try {
+            
+            
+
+            SagaLifecycle.end();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
     public void rollbackBorrowingRecord(String id) {

@@ -1,4 +1,4 @@
-package com.nvminh162.employeeservice.query.model;
+package com.nvminh162.commonservice.queries;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -8,16 +8,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Setter
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeResponseModel {
+@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class GetDetailEmployeeQuery {
     String id;
-    String firstName;
-    String lastName;
-    String kin;
-    Boolean isDisciplined;
 }

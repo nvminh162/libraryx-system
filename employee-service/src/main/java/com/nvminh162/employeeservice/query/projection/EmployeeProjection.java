@@ -6,11 +6,11 @@ import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import com.nvminh162.commonservice.model.EmployeeResponseCommonModel;
+import com.nvminh162.commonservice.queries.GetDetailEmployeeQuery;
 import com.nvminh162.employeeservice.command.data.Employee;
 import com.nvminh162.employeeservice.command.data.EmployeeRepository;
-import com.nvminh162.employeeservice.query.model.EmployeeResponseModel;
 import com.nvminh162.employeeservice.query.queries.GetAllEmployeeQuery;
-import com.nvminh162.employeeservice.query.queries.GetDetailEmployeeQuery;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -24,17 +24,17 @@ public class EmployeeProjection {
     EmployeeRepository employeeRepository;
 
     @QueryHandler
-    public List<EmployeeResponseModel> handle(GetAllEmployeeQuery query) {
+    public List<EmployeeResponseCommonModel> handle(GetAllEmployeeQuery query) {
         return employeeRepository.findByIsDisciplined(query.getIsDisciplined()).stream().map(employee -> {
-            EmployeeResponseModel model = new EmployeeResponseModel();
+            EmployeeResponseCommonModel model = new EmployeeResponseCommonModel();
             BeanUtils.copyProperties(employee, model);
             return model;
         }).toList();
     }
 
     @QueryHandler
-    public EmployeeResponseModel handle(GetDetailEmployeeQuery query) throws Exception {
-        EmployeeResponseModel model = new EmployeeResponseModel();
+    public EmployeeResponseCommonModel handle(GetDetailEmployeeQuery query) throws Exception {
+        EmployeeResponseCommonModel model = new EmployeeResponseCommonModel();
         Employee employee = employeeRepository.findById(query.getId())
                 .orElseThrow(() -> new Exception("Employee ID not found " + query.getId()));
         BeanUtils.copyProperties(employee, model);

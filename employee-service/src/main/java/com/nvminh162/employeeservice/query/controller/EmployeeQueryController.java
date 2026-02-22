@@ -6,9 +6,9 @@ import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nvminh162.employeeservice.query.model.EmployeeResponseModel;
+import com.nvminh162.commonservice.model.EmployeeResponseCommonModel;
+import com.nvminh162.commonservice.queries.GetDetailEmployeeQuery;
 import com.nvminh162.employeeservice.query.queries.GetAllEmployeeQuery;
-import com.nvminh162.employeeservice.query.queries.GetDetailEmployeeQuery;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -38,16 +38,16 @@ public class EmployeeQueryController {
             @ApiResponse(responseCode = "401", description = "Unauthorized / Invalid token")
     })
     @GetMapping
-    public List<EmployeeResponseModel> getAllEmployees(
+    public List<EmployeeResponseCommonModel> getAllEmployees(
             @RequestParam(required = false, defaultValue = "false") Boolean isDisciplined) {
         log.info("CALL: getAllEmployees");
         return queryGateway.query(new GetAllEmployeeQuery(isDisciplined),
-                ResponseTypes.multipleInstancesOf(EmployeeResponseModel.class)).join();
+                ResponseTypes.multipleInstancesOf(EmployeeResponseCommonModel.class)).join();
     }
 
     @GetMapping("/{employeeId}")
-    public EmployeeResponseModel getDetailEmployee(@PathVariable String employeeId) {
+    public EmployeeResponseCommonModel getDetailEmployee(@PathVariable String employeeId) {
         GetDetailEmployeeQuery query = GetDetailEmployeeQuery.builder().id(employeeId).build();
-        return queryGateway.query(query, ResponseTypes.instanceOf(EmployeeResponseModel.class)).join();
+        return queryGateway.query(query, ResponseTypes.instanceOf(EmployeeResponseCommonModel.class)).join();
     }
 }
