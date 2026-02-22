@@ -1,0 +1,18 @@
+# Vì common-service là thư viện dùng chung (không phải service chạy độc lập), không cần khai báo spring.application.name
+
+spring:
+    kafka:
+        bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:kafka:9094}
+        consumer:
+            group-id: ${KAFKA_GROUP_ID:default-group}
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: nvminh1602@gmail.com
+        password: 
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
