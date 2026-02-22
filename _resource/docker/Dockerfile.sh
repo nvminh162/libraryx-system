@@ -13,3 +13,6 @@ docker build -t discover-server .
 # ==========================================
 # D:\Course\library-management-system\discover-server (any where)
 docker run -d -p 8761:8761 --name discover-server discover-server
+
+# OTHER
+docker compose build --no-cache notification-service
