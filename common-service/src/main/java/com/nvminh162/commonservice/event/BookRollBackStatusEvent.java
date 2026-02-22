@@ -1,4 +1,4 @@
-package com.nvminh162.borrowingservice.command.model;
+package com.nvminh162.commonservice.event;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BorrowingCreateModel {
+public class BookRollBackStatusEvent {
     String bookId;
+    Boolean isReady;
     String employeeId;
+    String borrowingId;
 }

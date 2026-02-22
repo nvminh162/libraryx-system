@@ -3,6 +3,7 @@ package com.nvminh162.bookservice.command.event;
 import com.nvminh162.bookservice.command.data.Book;
 import com.nvminh162.bookservice.command.data.BookRepository;
 import com.nvminh162.commonservice.event.BookUpdatedStatusEvent;
+import com.nvminh162.commonservice.event.BookRollBackStatusEvent;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,15 @@ public class BookEventsHandler {
 
     @EventHandler
     public void on(BookUpdatedStatusEvent event) {
+        Optional<Book> optionalBook = bookRepository.findById(event.getBookId());
+        optionalBook.ifPresent(book -> {
+            book.setIsReady(event.getIsReady());
+            bookRepository.save(book);
+        });
+    }
+
+    @EventHandler
+    public void on(BookRollBackStatusEvent event) {
         Optional<Book> optionalBook = bookRepository.findById(event.getBookId());
         optionalBook.ifPresent(book -> {
             book.setIsReady(event.getIsReady());
