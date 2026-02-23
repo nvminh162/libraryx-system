@@ -2,6 +2,7 @@ package com.nvminh162.userservice.entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,9 +31,15 @@ public class User {
 
     String userId;
     String username;
+
+     @Column(unique = true, nullable = false)
     String email;
+
     String firstName;
     String lastName;
-    LocalDate dob;
+
+    @Column(nullable = false)
     String name;
+
+    LocalDate dob;
 }
