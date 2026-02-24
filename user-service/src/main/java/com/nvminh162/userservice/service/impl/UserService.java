@@ -36,9 +36,9 @@ public class UserService implements IUserService {
     KeycloakClient keycloakClient;
     UserMapper userMapper;
 
-    // @NonFinal
-    // @Value("${keycloak.realm}")
-    // String realm;
+    @NonFinal
+    @Value("${keycloak.realm}")
+    String realm;
 
     @NonFinal
     @Value("${keycloak.client-id}")
@@ -50,6 +50,8 @@ public class UserService implements IUserService {
 
     @Override
     public UserResponse createUser(UserCreationRequest request) {
+        log.info(">>> REALML: {}, CLIENT_ID: {}, CLIENT_SECRET: {}", realm, clientId, clientSecret);
+
         TokenExchangeResponse token = keycloakClient.exchangeToken(
                 TokenExchangeParam.builder()
                         .grant_type("client_credentials")
