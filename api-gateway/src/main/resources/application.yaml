@@ -40,6 +40,8 @@ spring:
                   uri: http://localhost:9004
                   predicates:
                       - Path=/api/v1/users/**
+                  filters:
+                      - name: JwtHeaderFilter
                 - id: auth-service
                   uri: http://localhost:9004
                   predicates:
