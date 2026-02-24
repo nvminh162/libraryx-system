@@ -53,6 +53,7 @@ public class UserService implements IUserService {
         log.info(">>> REALML: {}, CLIENT_ID: {}, CLIENT_SECRET: {}", realm, clientId, clientSecret);
 
         TokenExchangeResponse token = keycloakClient.exchangeToken(
+                realm,
                 TokenExchangeParam.builder()
                         .grant_type("client_credentials")
                         .client_id(clientId)
@@ -62,20 +63,21 @@ public class UserService implements IUserService {
         log.info(">>> Token exchange response: {}", token);
 
         ResponseEntity<?> userCreationResponse = keycloakClient.createUser(
-                        "Bearer " + token.getAccessToken(),
-                        UserCreationParam.builder()
-                                .username(request.getUsername())
-                                .firstName(request.getFirstName())
-                                .lastName(request.getLastName())
-                                .email(request.getEmail())
-                                .enabled(true)
-                                .emailVerified(false)
-                                .credentials(List.of(Credential.builder()
-                                        .type("password")
-                                        .temporary(false)
-                                        .value(request.getPassword())
-                                        .build()))
-                                .build());
+                realm,
+                "Bearer " + token.getAccessToken(),
+                UserCreationParam.builder()
+                        .username(request.getUsername())
+                        .firstName(request.getFirstName())
+                        .lastName(request.getLastName())
+                        .email(request.getEmail())
+                        .enabled(true)
+                        .emailVerified(false)
+                        .credentials(List.of(Credential.builder()
+                                .type("password")
+                                .temporary(false)
+                                .value(request.getPassword())
+                                .build()))
+                        .build());
         log.info(">>> User creation response: {}", userCreationResponse);
 
         String userId = extractUserId(userCreationResponse);
