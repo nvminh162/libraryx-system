@@ -18,6 +18,7 @@ import com.nvminh162.userservice.mapper.UserMapper;
 import com.nvminh162.userservice.repository.KeycloakClient;
 import com.nvminh162.userservice.repository.UserRepository;
 import com.nvminh162.userservice.service.IUserService;
+import com.nvminh162.userservice.utils.KeycloakUtils;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -79,7 +80,7 @@ public class UserService implements IUserService {
                         .build());
         log.info(">>> User creation response: {}", userCreationResponse);
 
-        String userId = extractUserId(userCreationResponse);
+        String userId = KeycloakUtils.extractUserId(userCreationResponse);
         log.info(">>> User ID: {}", userId);
 
         User user = userMapper.toUser(request);
@@ -112,15 +113,5 @@ public class UserService implements IUserService {
         User user = userRepository.findByUserId(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
         userRepository.delete(user);
-    }
-
-    private String extractUserId(ResponseEntity<?> response) {
-        List<String> locations = response.getHeaders().get("Location");
-        if (locations == null || locations.isEmpty()) {
-            throw new IllegalStateException("Location header is missing in the response");
-        }
-        String location = locations.get(0);
-        String[] splitedStr = location.split("/");
-        return splitedStr[splitedStr.length - 1];
     }
 }
