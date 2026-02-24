@@ -42,3 +42,41 @@ Client Request (có JWT Bearer token)
 | `X-Username` | Username (claim `preferred_username`) |
 
 > Downstream service **không cần tự decode JWT** — chỉ cần đọc `X-User-Id` và `X-Username` từ header là biết ai đang gọi. Filter này được apply cho route user-service trong application.yaml.
+
+# ClassCastException
+
+## Lỗi `ClassCastException` trong `JwtHeaderFilter`
+
+### Nguyên nhân
+
+```
+class java.lang.Object cannot be cast to class 
+com.nvminh162.apigateway.filter.JwtHeaderFilter$Config
+```
+
+Class `Config` đang là `static` nhưng **không được truyền vào constructor** của `AbstractGatewayFilterFactory`. Spring Gateway không biết kiểu Config để deserialize.
+
+### Fix
+
+````java
+// ...existing code...
+
+@Component
+public class JwtHeaderFilter extends AbstractGatewayFilterFactory<JwtHeaderFilter.Config> {
+
+    public JwtHeaderFilter() {
+        super(Config.class); // ← thêm dòng này
+    }
+
+    public static class Config { // ← đổi thành public static
+    }
+
+// ...existing code...
+````
+
+### Giải thích
+
+| Vấn đề | Fix |
+|--------|-----|
+| Thiếu `super(Config.class)` | Spring không biết type để cast → `ClassCastException` |
+| `Config` là package-private | Đổi thành `public static` để Gateway có thể access |

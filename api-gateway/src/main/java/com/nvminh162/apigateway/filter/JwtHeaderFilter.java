@@ -12,6 +12,10 @@ public class JwtHeaderFilter extends AbstractGatewayFilterFactory<JwtHeaderFilte
     static class Config {
     }
 
+    public JwtHeaderFilter(){
+        super(JwtHeaderFilter.Config.class);
+    }
+
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
