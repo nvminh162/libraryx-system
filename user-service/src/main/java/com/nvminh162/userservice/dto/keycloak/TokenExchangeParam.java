@@ -1,6 +1,4 @@
-package com.nvminh162.userservice.dto.request;
-
-import java.time.LocalDate;
+package com.nvminh162.userservice.dto.keycloak;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,16 +10,13 @@ import lombok.experimental.FieldDefaults;
 
 @Setter
 @Getter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserCreationRequest {
-    String username;
-    String email;
-    String firstName;
-    String lastName;
-    String name;
-    LocalDate dob;
-    String password;
+public class TokenExchangeParam {
+    String grant_type;
+    String client_id;
+    String client_secret;
+    String scope;
 }

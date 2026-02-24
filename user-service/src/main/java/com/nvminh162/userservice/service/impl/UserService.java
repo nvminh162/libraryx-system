@@ -3,19 +3,27 @@ package com.nvminh162.userservice.service.impl;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.nvminh162.userservice.dto.keycloak.Credential;
+import com.nvminh162.userservice.dto.keycloak.TokenExchangeParam;
+import com.nvminh162.userservice.dto.keycloak.TokenExchangeResponse;
+import com.nvminh162.userservice.dto.keycloak.UserCreationParam;
 import com.nvminh162.userservice.dto.request.UserCreationRequest;
 import com.nvminh162.userservice.dto.request.UserUpdatenRequest;
 import com.nvminh162.userservice.dto.response.UserResponse;
 import com.nvminh162.userservice.entity.User;
 import com.nvminh162.userservice.mapper.UserMapper;
+import com.nvminh162.userservice.repository.KeycloakClient;
 import com.nvminh162.userservice.repository.UserRepository;
 import com.nvminh162.userservice.service.IUserService;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,12 +33,54 @@ import lombok.extern.slf4j.Slf4j;
 public class UserService implements IUserService {
 
     UserRepository userRepository;
+    KeycloakClient keycloakClient;
     UserMapper userMapper;
+
+    // @NonFinal
+    // @Value("${keycloak.realm}")
+    // String realm;
+
+    @NonFinal
+    @Value("${keycloak.client-id}")
+    String clientId;
+
+    @NonFinal
+    @Value("${keycloak.client-secret}")
+    String clientSecret;
 
     @Override
     public UserResponse createUser(UserCreationRequest request) {
+        TokenExchangeResponse token = keycloakClient.exchangeToken(
+                TokenExchangeParam.builder()
+                        .grant_type("client_credentials")
+                        .client_id(clientId)
+                        .client_secret(clientSecret)
+                        .scope("openid")
+                        .build());
+        log.info(">>> Token exchange response: {}", token);
+
+        ResponseEntity<?> userCreationResponse = keycloakClient.createUser(
+                        "Bearer " + token.getAccessToken(),
+                        UserCreationParam.builder()
+                                .username(request.getUsername())
+                                .firstName(request.getFirstName())
+                                .lastName(request.getLastName())
+                                .email(request.getEmail())
+                                .enabled(true)
+                                .emailVerified(false)
+                                .credentials(List.of(Credential.builder()
+                                        .type("password")
+                                        .temporary(false)
+                                        .value(request.getPassword())
+                                        .build()))
+                                .build());
+        log.info(">>> User creation response: {}", userCreationResponse);
+
+        String userId = extractUserId(userCreationResponse);
+        log.info(">>> User ID: {}", userId);
+
         User user = userMapper.toUser(request);
-        user.setUserId(UUID.randomUUID().toString());
+        user.setUserId(userId);
         return userMapper.toResponse(userRepository.save(user));
     }
 
@@ -59,5 +109,15 @@ public class UserService implements IUserService {
         User user = userRepository.findByUserId(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
         userRepository.delete(user);
+    }
+
+    private String extractUserId(ResponseEntity<?> response) {
+        List<String> locations = response.getHeaders().get("Location");
+        if (locations == null || locations.isEmpty()) {
+            throw new IllegalStateException("Location header is missing in the response");
+        }
+        String location = locations.get(0);
+        String[] splitedStr = location.split("/");
+        return splitedStr[splitedStr.length - 1];
     }
 }
