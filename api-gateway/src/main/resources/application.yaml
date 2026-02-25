@@ -38,6 +38,17 @@ spring:
                             redis-rate-limiter.burstCapacity: 20
                             redis-rate-limiter.requestedTokens: 1
                       - KeyAuthFilter
+                - id: borrowing-service
+                  uri: lb://borrowing-service
+                  predicates:
+                      - Path=/api/v1/borrowing/**
+                  filters:
+                      - name: RequestRateLimiter
+                        args:
+                            redis-rate-limiter.replenishRate: 10
+                            redis-rate-limiter.burstCapacity: 20
+                            redis-rate-limiter.requestedTokens: 1
+                      - KeyAuthFilter
                 - id: user-service
                   uri: http://localhost:9004
                   predicates:
