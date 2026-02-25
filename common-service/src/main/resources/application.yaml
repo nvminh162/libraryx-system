@@ -1,15 +1,15 @@
-# Vì common-service là thư viện dùng chung (không phải service chạy độc lập), không cần khai báo spring.application.name
+# không cần khai báo spring.application.name
 
 spring:
     kafka:
-        bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:kafka:9094}
+        bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
         consumer:
             group-id: ${KAFKA_GROUP_ID:default-group}
     mail:
-        host: smtp.gmail.com
-        port: 587
-        username: nvminh1602@gmail.com
-        password: 
+        host: ${MAIL_HOST:smtp.gmail.com}
+        port: ${MAIL_PORT:587}
+        username: ${MAIL_USERNAME:nvminh1602@gmail.com}
+        password: ${MAIL_PASSWORD:xxxx}
         properties:
             mail:
                 smtp:
