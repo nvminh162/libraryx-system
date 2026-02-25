@@ -20,8 +20,8 @@ graph TB
         BookService[Book Service<br/>Port: 9001<br/>CQRS + Event Sourcing]
         BorrowingService[Borrowing Service<br/>Port: 9003<br/>Saga Orchestration]
         EmployeeService[Employee Service<br/>Port: 9002<br/>CQRS + Event Sourcing]
-        UserService[User Service<br/>Port: 9005<br/>Authentication]
-        NotificationService[Notification Service<br/>Port: 9003<br/>Email & Kafka Consumer]
+        UserService[User Service<br/>Port: 9004<br/>Authentication]
+        NotificationService[Notification Service<br/>Port: 9005<br/>Email & Kafka Consumer]
         CommonService[Common Service<br/>Shared Components]
     end
 

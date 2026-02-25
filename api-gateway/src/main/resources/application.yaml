@@ -8,8 +8,8 @@ spring:
         name: api-gateway # Tên của service, dùng để đăng ký với Eureka Server
     data:
         redis:
-            port: 6379
-            host: localhost
+            port: ${REDIS_PORT}
+            host: ${REDIS_HOST}
     cloud:
         gateway:
             discovery:
@@ -52,7 +52,7 @@ spring:
         oauth2:
             resourceserver:
                 jwt:
-                    issuer-uri: http://localhost:8180/realms/library-sm
+                    issuer-uri: ${JWT_ISSUER_URI}
 eureka:
     instance:
         hostname: discover-server
@@ -62,4 +62,4 @@ eureka:
             register-with-eureka: true # Cho phép đăng ký service này với Eureka Server
             fetch-registry: true # Cho phép lấy thông tin registry của các service khác từ Eureka Server
 
-apiKey: nvminh162
+apiKey: ${KEY_AUTH_FILTER}
