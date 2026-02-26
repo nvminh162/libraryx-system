@@ -110,6 +110,39 @@ services:
             - axonserver
         # environment:
         #     - 'AXONIQ_AXONSERVER_SERVERS=axonserver:8124'
+    employee-service:
+        build:
+            context: .
+            dockerfile: employee-service/Dockerfile
+        ports:
+            - '9002:9002'
+        networks:
+            - microservices-network
+        depends_on:
+            - discover-server
+            - axonserver
+    borrowing-service:
+        build:
+            context: .
+            dockerfile: borrowing-service/Dockerfile
+        ports:
+            - '9003:9003'
+        networks:
+            - microservices-network
+        depends_on:
+            - discover-server
+            - axonserver
+            - kafka
+    user-service:
+        build:
+            context: .
+            dockerfile: user-service/Dockerfile
+        ports:
+            - '9004:9004'
+        networks:
+            - microservices-network
+        depends_on:
+            - discover-server
     notification-service:
         build:
             context: .
@@ -123,7 +156,6 @@ services:
             - axonserver
         # environment:
         #     - 'KAFKA_BOOTSTRAP_SERVERS=broker:9092'
-
 networks:
     microservices-network:
         driver: bridge
