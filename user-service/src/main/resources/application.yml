@@ -3,13 +3,9 @@ server:
 
 spring:
     profiles:
-        active: "dev"
+        active: prod
     application:
         name: user-service
-    datasource:
-        url: ${DB_URL}
-        username: ${DB_USERNAME}
-        password: ${DB_PASSWORD}
     jpa:
         hibernate:
             ddl-auto: update
@@ -18,14 +14,3 @@ spring:
             hibernate:
                 dialect: org.hibernate.dialect.MySQLDialect
                 format_sql: true
-
-eureka:
-    client:
-        service-url:
-            defaultZone: http://localhost:8761/eureka
-
-keycloak:
-    url: ${KEYCLOAK_URL}
-    realm: ${KEYCLOAK_REALM}
-    client-id: ${KEYCLOAK_CLIENT_ID}
-    client-secret: ${KEYCLOAK_CLIENT_SECRET}

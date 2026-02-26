@@ -7,7 +7,7 @@ spring:
         oauth2:
             resourceserver:
                 jwt:
-                    issuer-uri: http://localhost:8180/realms/library-sm
+                    issuer-uri: http://localhost:8180/realms/libraryx-system
 
 eureka:
     instance:

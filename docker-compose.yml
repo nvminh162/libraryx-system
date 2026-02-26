@@ -78,6 +78,19 @@ services:
             - '8224:8224'
         networks:
             - microservices-network
+    mysql:
+        image: mysql:8.4
+        container_name: mysql
+        restart: unless-stopped
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: userdb
+        volumes:
+            - mysql_data:/var/lib/mysql
+        networks:
+            - microservices-network
     discover-server:
         build:
             context: .
@@ -92,6 +105,8 @@ services:
             dockerfile: api-gateway/Dockerfile
         ports:
             - '8080:8080'
+        env_file:
+            - ./api-gateway/.env
         networks:
             - microservices-network
         depends_on:
@@ -103,19 +118,21 @@ services:
             dockerfile: book-service/Dockerfile
         ports:
             - '9001:9001'
+        env_file:
+            - ./book-service/.env
         networks:
             - microservices-network
         depends_on:
             - discover-server
             - axonserver
-        # environment:
-        #     - 'AXONIQ_AXONSERVER_SERVERS=axonserver:8124'
     employee-service:
         build:
             context: .
             dockerfile: employee-service/Dockerfile
         ports:
             - '9002:9002'
+        env_file:
+            - ./employee-service/.env
         networks:
             - microservices-network
         depends_on:
@@ -127,6 +144,8 @@ services:
             dockerfile: borrowing-service/Dockerfile
         ports:
             - '9003:9003'
+        env_file:
+            - ./borrowing-service/.env
         networks:
             - microservices-network
         depends_on:
@@ -139,34 +158,41 @@ services:
             dockerfile: user-service/Dockerfile
         ports:
             - '9004:9004'
+        env_file:
+            - ./user-service/.env
         networks:
             - microservices-network
         depends_on:
             - discover-server
+            - mysql
     notification-service:
         build:
             context: .
             dockerfile: notification-service/Dockerfile
         ports:
             - '9005:9005'
+        env_file:
+            - ./notification-service/.env
         networks:
             - microservices-network
         depends_on:
             - kafka
             - axonserver
-        # environment:
-        #     - 'KAFKA_BOOTSTRAP_SERVERS=broker:9092'
 networks:
     microservices-network:
-        driver: bridge
+        external: true
+        name: microservices-network
 
 volumes:
     redisinsight_data:
     kafka-data:
+    mysql_data:
 
 # /var/lib/docker/volumes/library-management-system_redisinsight_data/_data/
 # /var/lib/docker/volumes/library-management-system_kafka-data/_data/
 
 # ==========================================================
 # => docker compose up -d
+# docker compose up -d --build api-gateway
+# => docker compose up -d --force-recreate user-service
 # ==========================================================
