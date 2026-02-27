@@ -17,9 +17,9 @@ public class SecurityConfig {
         http.csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers(HttpMethod.POST, "api/v1/auth/login").permitAll()
-                        .pathMatchers(HttpMethod.GET, "api/v1/auth/books").permitAll()
-                        .pathMatchers(HttpMethod.GET, "api/v1/auth/employees").permitAll()
-                        .pathMatchers(HttpMethod.GET, "api/v1/auth/users").permitAll()
+                        .pathMatchers(HttpMethod.GET, "api/v1/books").permitAll()
+                        .pathMatchers(HttpMethod.GET, "api/v1/employees").permitAll()
+                        .pathMatchers(HttpMethod.GET, "api/v1/users").permitAll()
                         .anyExchange().authenticated())
                 .oauth2ResourceServer(resourceServer -> resourceServer.jwt(Customizer.withDefaults()));
         return http.build();
