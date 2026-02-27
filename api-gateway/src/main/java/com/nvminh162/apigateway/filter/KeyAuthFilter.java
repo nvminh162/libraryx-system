@@ -28,6 +28,13 @@ public class KeyAuthFilter extends AbstractGatewayFilterFactory<KeyAuthFilter.Co
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
+            String path = exchange.getRequest().getURI().getPath();
+            String method = exchange.getRequest().getMethod().name();
+
+            if (isPublicEndpoint(path, method)) {
+                return chain.filter(exchange);
+            }
+            
             if (!exchange.getRequest().getHeaders().containsKey("apiKey")) {
                 return handleException(exchange, "Missing authorization information", HttpStatus.UNAUTHORIZED);
             }
@@ -64,5 +71,12 @@ public class KeyAuthFilter extends AbstractGatewayFilterFactory<KeyAuthFilter.Co
                 exchange.getRequest().getURI().getPath());
 
         return response.writeWith(Mono.just(response.bufferFactory().wrap(errorResponse.getBytes())));
+    }
+
+    private boolean isPublicEndpoint(String path, String method) {
+        return (method.equals("POST") && path.equals("/api/v1/auth/login"))
+                || (method.equals("GET") && path.equals("/api/v1/books"))
+                || (method.equals("GET") && path.equals("/api/v1/employees"))
+                || (method.equals("GET") && path.equals("/api/v1/users"));
     }
 }
