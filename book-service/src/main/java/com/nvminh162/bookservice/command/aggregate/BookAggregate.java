@@ -6,10 +6,10 @@ import com.nvminh162.bookservice.command.command.UpdateBookCommand;
 import com.nvminh162.bookservice.command.event.BookCreatedEvent;
 import com.nvminh162.bookservice.command.event.BookDeletedEvent;
 import com.nvminh162.bookservice.command.event.BookUpdatedEvent;
-import com.nvminh162.commonservice.command.UpdateStatusBookCommand;
-import com.nvminh162.commonservice.command.RollBackStatusBookCommand;
-import com.nvminh162.commonservice.event.BookUpdatedStatusEvent;
-import com.nvminh162.commonservice.event.BookRollBackStatusEvent;
+import com.nvminh162.bookservice.command.command.UpdateStatusBookCommand;
+import com.nvminh162.bookservice.command.command.RollBackStatusBookCommand;
+import com.nvminh162.bookservice.command.event.BookUpdatedStatusEvent;
+import com.nvminh162.bookservice.command.event.BookRollBackStatusEvent;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

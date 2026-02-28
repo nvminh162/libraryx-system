@@ -4,7 +4,6 @@ import com.nvminh162.bookservice.command.command.CreateBookCommand;
 import com.nvminh162.bookservice.command.command.DeleteBookCommand;
 import com.nvminh162.bookservice.command.command.UpdateBookCommand;
 import com.nvminh162.bookservice.command.model.BookRequestModel;
-import com.nvminh162.commonservice.service.KafkaService;
 
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -54,13 +53,4 @@ public class BookCommandController {
                 .build();
         return commandGateway.sendAndWait(command);
     }
-
-    @Autowired
-    private KafkaService kafkaService;
-
-    @PostMapping("/sendMessage")
-    public void sendMessage(@RequestBody String message) {
-        kafkaService.sendMessage("test", message);
-    }
-    
 }

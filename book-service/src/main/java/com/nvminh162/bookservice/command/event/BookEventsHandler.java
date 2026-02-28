@@ -2,8 +2,8 @@ package com.nvminh162.bookservice.command.event;
 
 import com.nvminh162.bookservice.command.data.Book;
 import com.nvminh162.bookservice.command.data.BookRepository;
-import com.nvminh162.commonservice.event.BookUpdatedStatusEvent;
-import com.nvminh162.commonservice.event.BookRollBackStatusEvent;
+import com.nvminh162.bookservice.command.event.BookUpdatedStatusEvent;
+import com.nvminh162.bookservice.command.event.BookRollBackStatusEvent;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

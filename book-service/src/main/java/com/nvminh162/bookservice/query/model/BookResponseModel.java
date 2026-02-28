@@ -1,8 +1,7 @@
-package com.nvminh162.commonservice.model;
+package com.nvminh162.bookservice.query.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import jakarta.persistence.Column;
 
 @Getter
 @Setter
@@ -10,10 +9,9 @@ import jakarta.persistence.Column;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BookResponseCommonModel {
+public class BookResponseModel {
     String id;
     String name;
     String author;
-    @Column(name = "is_ready")
     Boolean isReady;
 }

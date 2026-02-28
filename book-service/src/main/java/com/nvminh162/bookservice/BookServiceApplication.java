@@ -5,17 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
 @SpringBootApplication
 @EnableDiscoveryClient
-// ngoài scan chính bản thân nó cũng phải chú ý đến common service
-@ComponentScan({"com.nvminh162.bookservice", "com.nvminh162.commonservice"})
 public class BookServiceApplication {
 
     public static void main(String[] args) {
-        Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
-        dotenv.entries().forEach(entry -> System.setProperty(entry.getKey(), entry.getValue()));
         SpringApplication.run(BookServiceApplication.class, args);
     }
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="create-table-book" author="nvminh162">
+        <preConditions onFail="CONTINUE" onFailMessage="table books already exists">
+            <not>
+                <tableExists tableName="books" />
+            </not>
+        </preConditions>
+        <createTable tableName="books">
+            <column name="id" type="VARCHAR(255)">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="table-book-add-column-author" author="nvminh162">
+        <preConditions onFail="CONTINUE" onFailMessage="column author already exists in table books">
+            <not>
+                <columnExists tableName="books" columnName="author" />
+            </not>
+        </preConditions>
+        <addColumn tableName="books">
+            <column name="author" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="table-book-add-column-name" author="nvminh162">
+        <preConditions onFail="CONTINUE" onFailMessage="column name already exists in table books">
+            <not>
+                <columnExists tableName="books" columnName="name" />
+            </not>
+        </preConditions>
+        <addColumn tableName="books">
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="table-book-add-column-is-ready" author="nvminh162">
+        <preConditions onFail="CONTINUE" onFailMessage="column is_ready already exists in table books">
+            <not>
+                <columnExists tableName="books" columnName="is_ready" />
+            </not>
+        </preConditions>
+        <addColumn tableName="books">
+            <column name="is_ready" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+    
+
+</databaseChangeLog>
