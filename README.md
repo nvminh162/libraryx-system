@@ -80,9 +80,6 @@ graph TB
     style Redis fill:#F44336
 ```
 
-![Architecture Diagram](./_resources/readme/hight-level-architecture-project.png)
-![CI/CD Pipeline](./_resources/readme/cicd.png)
-
 ## 📚 About
 
 Libraryx is a library management system that encompasses various aspects and tasks that librarians and users can perform. The system enables:
