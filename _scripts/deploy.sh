@@ -2,7 +2,7 @@ BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 echo "Deploying with branch: $BRANCH"
 
-cd app/libraryx-system/
+cd ~/app/libraryx-system/
 git checkout $BRANCH
 git fetch -a
 git pull
