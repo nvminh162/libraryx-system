@@ -8,6 +8,7 @@ on:
 
 jobs:
     build-and-push:
+        if: false # Set to true to enable the build and push job
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
@@ -27,6 +28,7 @@ jobs:
                   docker compose -f docker-compose.yml build discover-server
                   docker compose -f docker-compose.yml push discover-server
     deploy:
+        if: false # Set to true to enable the deploy job
         needs: build-and-push
         runs-on: ubuntu-latest
         steps:
