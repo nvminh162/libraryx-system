@@ -95,7 +95,7 @@ services:
         build:
             context: .
             dockerfile: discover-server/Dockerfile
-        image: ${DOCKERHUB_USERNAME:-nvminh162}/discover-server:latest
+        image: ${DOCKERHUB_USERNAME}/discover-server:latest
         ports:
             - '8761:8761'
         networks:
@@ -104,11 +104,14 @@ services:
         build:
             context: .
             dockerfile: api-gateway/Dockerfile
-        image: ${DOCKERHUB_USERNAME:-nvminh162}/api-gateway:latest
+        image: ${DOCKERHUB_USERNAME}/api-gateway:latest
         ports:
             - '8080:8080'
-        env_file:
-            - ./api-gateway/.env
+        environment:
+            REDIS_PORT: 6379
+            REDIS_HOST: redis
+            JWT_ISSUER_URI: http://keycloak:8080/realms/libraryx-system
+            KEY_AUTH_FILTER: ${KEY_AUTH_FILTER}
         networks:
             - microservices-network
         depends_on:
@@ -118,11 +121,14 @@ services:
         build:
             context: .
             dockerfile: book-service/Dockerfile
-        image: ${DOCKERHUB_USERNAME:-nvminh162}/book-service:latest
+        image: ${DOCKERHUB_USERNAME}/book-service:latest
         ports:
             - '9001:9001'
-        env_file:
-            - ./book-service/.env
+        environment:
+            DB_URL: jdbc:h2:mem:bookdb
+            DB_DRIVER: org.h2.Driver
+            DB_USERNAME: sa
+            DB_PASSWORD: ""
         networks:
             - microservices-network
         depends_on:
@@ -132,11 +138,14 @@ services:
         build:
             context: .
             dockerfile: employee-service/Dockerfile
-        image: ${DOCKERHUB_USERNAME:-nvminh162}/employee-service:latest
+        image: ${DOCKERHUB_USERNAME}/employee-service:latest
         ports:
             - '9002:9002'
-        env_file:
-            - ./employee-service/.env
+        environment:
+            DB_URL: jdbc:h2:mem:employeedb
+            DB_DRIVER: org.h2.Driver
+            DB_USERNAME: sa
+            DB_PASSWORD: ""
         networks:
             - microservices-network
         depends_on:
@@ -146,11 +155,14 @@ services:
         build:
             context: .
             dockerfile: borrowing-service/Dockerfile
-        image: ${DOCKERHUB_USERNAME:-nvminh162}/borrowing-service:latest
+        image: ${DOCKERHUB_USERNAME}/borrowing-service:latest
         ports:
             - '9003:9003'
-        env_file:
-            - ./borrowing-service/.env
+        environment:
+            DB_URL: jdbc:h2:mem:borrowingdb
+            DB_DRIVER: org.h2.Driver
+            DB_USERNAME: sa
+            DB_PASSWORD: ""
         networks:
             - microservices-network
         depends_on:
@@ -161,11 +173,17 @@ services:
         build:
             context: .
             dockerfile: user-service/Dockerfile
-        image: ${DOCKERHUB_USERNAME:-nvminh162}/user-service:latest
+        image: ${DOCKERHUB_USERNAME}/user-service:latest
         ports:
             - '9004:9004'
-        env_file:
-            - ./user-service/.env
+        environment:
+            DB_URL: jdbc:mysql://mysql:3306/userdb?createDatabaseIfNotExist=true
+            DB_USERNAME: root
+            DB_PASSWORD: root
+            KEYCLOAK_URL: http://keycloak:8080
+            KEYCLOAK_REALM: libraryx-system
+            KEYCLOAK_CLIENT_ID: libraryx-system-cid
+            KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET}
         networks:
             - microservices-network
         depends_on:
@@ -175,11 +193,11 @@ services:
         build:
             context: .
             dockerfile: notification-service/Dockerfile
-        image: ${DOCKERHUB_USERNAME:-nvminh162}/notification-service:latest
+        image: ${DOCKERHUB_USERNAME}/notification-service:latest
         ports:
             - '9005:9005'
-        env_file:
-            - ./notification-service/.env
+        environment:
+            KAFKA_GROUP_ID: ${KAFKA_GROUP_ID}
         networks:
             - microservices-network
         depends_on:

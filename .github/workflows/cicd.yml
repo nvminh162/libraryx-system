@@ -20,6 +20,9 @@ jobs:
             - name: Build and push
               env:
                   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+                  KEY_AUTH_FILTER: ${{ secrets.KEY_AUTH_FILTER }}
+                  KEYCLOAK_CLIENT_SECRET: ${{ secrets.KEYCLOAK_CLIENT_SECRET }}
+                  KAFKA_GROUP_ID: ${{ secrets.KAFKA_GROUP_ID }}
               run: |
                   docker compose -f docker-compose.yml build discover-server
                   docker compose -f docker-compose.yml push discover-server
