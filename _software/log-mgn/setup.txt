@@ -1,3 +1,6 @@
+Giải thích về ELK
+https://www.youtube.com/watch?v=Bs41dR_Kf-0
+
 https://www.elastic.co/downloads/elasticsearch
 
 https://www.elastic.co/downloads/logstash
@@ -50,4 +53,5 @@ output {
 B6: Logstash
 D:\application\log-management\logstash-9.3.1\bin>
 RUN
+
 .\logstash.bat -f logstash.conf
