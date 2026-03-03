@@ -1,0 +1,209 @@
+2026-03-03T14:30:48.363+07:00  INFO 9976 --- [book-service] [main] c.n.bookservice.BookServiceApplication   : Starting BookServiceApplication using Java 21.0.10 with PID 9976 (D:\Course\libraryx-system\book-service\target\classes started by nvmin in D:\Course\libraryx-system\book-service)
+2026-03-03T14:30:48.367+07:00  INFO 9976 --- [book-service] [main] c.n.bookservice.BookServiceApplication   : The following 1 profile is active: "dev"
+2026-03-03T14:30:49.932+07:00  INFO 9976 --- [book-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-03T14:30:50.234+07:00  INFO 9976 --- [book-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 287 ms. Found 1 JPA repository interface.
+2026-03-03T14:30:50.630+07:00  INFO 9976 --- [book-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=ea342d23-1184-339a-a779-f43d7982d161
+2026-03-03T14:30:51.893+07:00  INFO 9976 --- [book-service] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 9001 (http)
+2026-03-03T14:30:51.916+07:00  INFO 9976 --- [book-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-03T14:30:51.917+07:00  INFO 9976 --- [book-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-03-03T14:30:52.016+07:00  INFO 9976 --- [book-service] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3558 ms
+2026-03-03T14:30:52.330+07:00  INFO 9976 --- [book-service] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-03T14:30:52.465+07:00  INFO 9976 --- [book-service] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-03-03T14:30:53.486+07:00  INFO 9976 --- [book-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-03T14:30:53.555+07:00  INFO 9976 --- [book-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-03T14:30:54.233+07:00  INFO 9976 --- [book-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:bookdb user=SA
+2026-03-03T14:30:54.236+07:00  INFO 9976 --- [book-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-03T14:30:54.282+07:00  WARN 9976 --- [book-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-03T14:30:54.324+07:00  INFO 9976 --- [book-service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:bookdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: BOOKDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-03T14:30:55.658+07:00  INFO 9976 --- [book-service] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-03T14:30:55.765+07:00  INFO 9976 --- [book-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03T14:30:55.904+07:00  INFO 9976 --- [book-service] [main] o.a.s.a.XStreamAutoConfiguration         : Initializing an XStream instance since none was found. The auto configuration base packages will be used as wildcards for the XStream security settings.
+2026-03-03T14:30:56.156+07:00  INFO 9976 --- [book-service] [main] o.a.s.util.XStreamSecurityTypeUtility    : Constructing wildcard type for base package [com.nvminh162.commonservice].
+2026-03-03T14:30:56.158+07:00  INFO 9976 --- [book-service] [main] o.a.s.util.XStreamSecurityTypeUtility    : Constructing wildcard type for base package [com.nvminh162.bookservice].
+2026-03-03T14:30:56.179+07:00  INFO 9976 --- [book-service] [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.Dom4JToByteArrayConverter] is ignored. It seems to rely on a class that is not available in the class loader: org/dom4j/Document
+2026-03-03T14:30:56.182+07:00  INFO 9976 --- [book-service] [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.InputStreamToDom4jConverter] is ignored. It seems to rely on a class that is not available in the class loader: org/dom4j/Document
+2026-03-03T14:30:56.187+07:00  INFO 9976 --- [book-service] [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.XomToStringConverter] is ignored. It seems to rely on a class that is not available in the class loader: nu/xom/Document
+2026-03-03T14:30:56.190+07:00  INFO 9976 --- [book-service] [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.InputStreamToXomConverter] is ignored. It seems to rely on a class that is not available in the class loader: nu/xom/ParsingException
+2026-03-03T14:30:56.334+07:00  INFO 9976 --- [book-service] [main] o.a.config.AxonIQConsoleModule           : 
+################################################################################################
+## You have not configured AxonIQ Console. AxonIQ Console provides out-of-the box monitoring  ##
+## and management capabilities for your Axon Application, starting with it is free.           ##
+## Visit https://console.axoniq.io for more information!                                      ##
+## Suppress this message by setting system property disable-axoniq-console-message to true.   ##
+################################################################################################
+
+2026-03-03T14:30:56.495+07:00  INFO 9976 --- [book-service] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-03T14:30:56.802+07:00  WARN 9976 --- [book-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-03T14:30:57.371+07:00  WARN 9976 --- [book-service] [main] o.s.b.f.a.FreeMarkerAutoConfiguration    : Cannot find template location: [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.check-template-location=false)
+2026-03-03T14:30:57.375+07:00  INFO 9976 --- [book-service] [main] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookdb'
+2026-03-03T14:30:57.554+07:00  INFO 9976 --- [book-service] [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestClient.
+2026-03-03T14:30:57.630+07:00  WARN 9976 --- [book-service] [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-03-03T14:30:57.726+07:00  INFO 9976 --- [book-service] [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-03-03T14:30:57.776+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-03-03T14:30:57.782+07:00  INFO 9976 --- [book-service] [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-03-03T14:30:57.800+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-03-03T14:30:57.801+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-03-03T14:30:57.801+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-03-03T14:30:57.802+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-03-03T14:30:57.803+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-03-03T14:30:57.804+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-03-03T14:30:57.805+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-03-03T14:30:58.918+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-03-03T14:30:58.921+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-03-03T14:30:58.926+07:00  INFO 9976 --- [book-service] [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-03-03T14:30:58.933+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1772523058930 with initial instances count: 0
+2026-03-03T14:30:58.949+07:00  INFO 9976 --- [book-service] [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application BOOK-SERVICE with eureka with status UP
+2026-03-03T14:30:58.955+07:00  INFO 9976 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1772523058955, current=UP, previous=STARTING]
+2026-03-03T14:30:58.962+07:00  INFO 9976 --- [book-service] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BOOK-SERVICE/DESKTOP-7P3SA93.mshome.net:book-service:9001: registering service...
+2026-03-03T14:30:59.009+07:00  INFO 9976 --- [book-service] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 9001 (http) with context path '/'
+2026-03-03T14:30:59.011+07:00  INFO 9976 --- [book-service] [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2026-03-03T14:30:59.081+07:00  WARN 9976 --- [book-service] [main] o.a.e.t.inmemory.InMemoryTokenStore      : An in memory token store is being created.
+This means the event processor using this token store might process the same events again when the application is restarted.
+If the use of an in memory token store is intentional, this warning can be ignored.
+If the tokens should be persisted, use the JPA, JDBC or MongoDB token store instead.
+2026-03-03T14:30:59.310+07:00  INFO 9976 --- [book-service] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BOOK-SERVICE/DESKTOP-7P3SA93.mshome.net:book-service:9001 - registration status: 204
+2026-03-03T14:30:59.670+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.impl.AxonServerManagedChannel    : Requesting connection details from localhost:8124
+2026-03-03T14:31:00.160+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.impl.AxonServerManagedChannel    : Successfully connected to localhost:8124
+2026-03-03T14:31:00.183+07:00  INFO 9976 --- [book-service] [main] i.a.a.connector.impl.ControlChannelImpl  : Connected instruction stream for context 'default'. Sending client identification
+2026-03-03T14:31:00.207+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : CommandChannel for context 'default' connected, 0 command handlers registered
+2026-03-03T14:31:00.212+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.bookservice.command.command.DeleteBookCommand' in context 'default'
+2026-03-03T14:31:00.222+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.commonservice.command.RollBackStatusBookCommand' in context 'default'
+2026-03-03T14:31:00.224+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.bookservice.command.command.CreateBookCommand' in context 'default'
+2026-03-03T14:31:00.225+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.commonservice.command.UpdateStatusBookCommand' in context 'default'
+2026-03-03T14:31:00.227+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.bookservice.command.command.UpdateBookCommand' in context 'default'
+2026-03-03T14:31:00.289+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.query.impl.QueryChannelImpl      : QueryChannel for context 'default' connected, 0 registrations resubscribed
+2026-03-03T14:31:00.302+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.query.impl.QueryChannelImpl      : Registered handler for query 'com.nvminh162.commonservice.queries.GetBookDetailQuery : com.nvminh162.commonservice.model.BookResponseCommonModel' in context 'default'
+2026-03-03T14:31:00.305+07:00  INFO 9976 --- [book-service] [main] i.a.a.c.query.impl.QueryChannelImpl      : Registered handler for query 'com.nvminh162.bookservice.query.queries.GetAllBookQuery : java.util.List<com.nvminh162.commonservice.model.BookResponseCommonModel>' in context 'default'
+2026-03-03T14:31:00.368+07:00  INFO 9976 --- [book-service] [EventProcessor[com.nvminh162.bookservice.command.event]-0] o.a.e.TrackingEventProcessor             : Worker assigned to segment Segment[0/0] for processing
+2026-03-03T14:31:00.375+07:00  INFO 9976 --- [book-service] [EventProcessor[com.nvminh162.bookservice.command.event]-0] o.a.e.TrackingEventProcessor             : Using current Thread for last segment worker: TrackingSegmentWorker{processor=com.nvminh162.bookservice.command.event, segment=Segment[0/0]}
+2026-03-03T14:31:00.375+07:00  INFO 9976 --- [book-service] [main] c.n.bookservice.BookServiceApplication   : Started BookServiceApplication in 12.903 seconds (process running for 13.827)
+2026-03-03T14:31:00.377+07:00  INFO 9976 --- [book-service] [EventProcessor[com.nvminh162.bookservice.command.event]-0] o.a.e.TrackingEventProcessor             : Fetched token: ReplayToken{currentToken=null, tokenAtReset=IndexTrackingToken{globalIndex=11}, context=null} for segment: Segment[0/0]
+2026-03-03T14:31:08.879+07:00  INFO 9976 --- [book-service] [http-nio-9001-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-03T14:31:08.880+07:00  INFO 9976 --- [book-service] [http-nio-9001-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-03T14:31:08.882+07:00  INFO 9976 --- [book-service] [http-nio-9001-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-03-03T14:31:09.150+07:00  INFO 9976 --- [book-service] [http-nio-9001-exec-3] c.n.b.q.controller.BookQueryController   : >>> GET ALL BOOKS: [com.nvminh162.commonservice.model.BookResponseCommonModel@a58718b, com.nvminh162.commonservice.model.BookResponseCommonModel@449e7595, com.nvminh162.commonservice.model.BookResponseCommonModel@552d7ab1]
+2026-03-03T14:31:28.929+07:00  INFO 9976 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-03-03T14:31:28.930+07:00  INFO 9976 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-03-03T14:31:28.931+07:00  INFO 9976 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-03-03T14:31:28.931+07:00  INFO 9976 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-03-03T14:31:28.932+07:00  INFO 9976 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-03-03T14:31:28.933+07:00  INFO 9976 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2026-03-03T14:31:28.933+07:00  INFO 9976 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-03-03T14:31:28.985+07:00  INFO 9976 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-03-03T14:35:57.823+07:00  INFO 9976 --- [book-service] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-03-03T14:40:13.986+07:00  INFO 9976 --- [book-service] [http-nio-9001-exec-10] c.n.b.q.controller.BookQueryController   : >>> GET ALL BOOKS: [com.nvminh162.commonservice.model.BookResponseCommonModel@483a7047, com.nvminh162.commonservice.model.BookResponseCommonModel@2b64a274, com.nvminh162.commonservice.model.BookResponseCommonModel@19269068]
+2026-03-03T14:40:55.471+07:00  INFO 9976 --- [book-service] [http-nio-9001-exec-1] c.n.b.q.controller.BookQueryController   : >>> GET ALL BOOKS: [com.nvminh162.commonservice.model.BookResponseCommonModel@645e4bb4, com.nvminh162.commonservice.model.BookResponseCommonModel@693151e1, com.nvminh162.commonservice.model.BookResponseCommonModel@35eec719]
+2026-03-03T14:40:57.833+07:00  INFO 9976 --- [book-service] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-03-03T14:43:01.678+07:00  INFO 14372 --- [book-service] [main] c.n.bookservice.BookServiceApplication   : Starting BookServiceApplication using Java 21.0.10 with PID 14372 (D:\Course\libraryx-system\book-service\target\classes started by nvmin in D:\Course\libraryx-system\book-service)
+2026-03-03T14:43:01.708+07:00  INFO 14372 --- [book-service] [main] c.n.bookservice.BookServiceApplication   : The following 1 profile is active: "dev"
+2026-03-03T14:43:05.697+07:00  INFO 14372 --- [book-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-03T14:43:06.802+07:00  INFO 14372 --- [book-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 979 ms. Found 1 JPA repository interface.
+2026-03-03T14:43:08.099+07:00  INFO 14372 --- [book-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=ea342d23-1184-339a-a779-f43d7982d161
+2026-03-03T14:43:13.629+07:00  INFO 14372 --- [book-service] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 9001 (http)
+2026-03-03T14:43:13.779+07:00  INFO 14372 --- [book-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-03T14:43:13.783+07:00  INFO 14372 --- [book-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-03-03T14:43:14.196+07:00  INFO 14372 --- [book-service] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 12241 ms
+2026-03-03T14:43:21.310+07:00  INFO 14372 --- [book-service] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-03T14:43:21.619+07:00  INFO 14372 --- [book-service] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-03-03T14:43:25.727+07:00  INFO 14372 --- [book-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-03T14:43:26.338+07:00  INFO 14372 --- [book-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-03T14:43:28.037+07:00  INFO 14372 --- [book-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:bookdb user=SA
+2026-03-03T14:43:28.093+07:00  INFO 14372 --- [book-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-03T14:43:28.516+07:00  WARN 14372 --- [book-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-03T14:43:28.748+07:00  INFO 14372 --- [book-service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:bookdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: BOOKDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-03T14:43:36.469+07:00  INFO 14372 --- [book-service] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-03T14:43:37.245+07:00  INFO 14372 --- [book-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03T14:43:38.592+07:00  INFO 14372 --- [book-service] [main] o.a.s.a.XStreamAutoConfiguration         : Initializing an XStream instance since none was found. The auto configuration base packages will be used as wildcards for the XStream security settings.
+2026-03-03T14:43:40.456+07:00  INFO 14372 --- [book-service] [main] o.a.s.util.XStreamSecurityTypeUtility    : Constructing wildcard type for base package [com.nvminh162.commonservice].
+2026-03-03T14:43:40.806+07:00  INFO 14372 --- [book-service] [main] o.a.s.util.XStreamSecurityTypeUtility    : Constructing wildcard type for base package [com.nvminh162.bookservice].
+2026-03-03T14:43:41.187+07:00  INFO 14372 --- [book-service] [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.Dom4JToByteArrayConverter] is ignored. It seems to rely on a class that is not available in the class loader: org/dom4j/Document
+2026-03-03T14:43:41.229+07:00  INFO 14372 --- [book-service] [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.InputStreamToDom4jConverter] is ignored. It seems to rely on a class that is not available in the class loader: org/dom4j/Document
+2026-03-03T14:43:41.455+07:00  INFO 14372 --- [book-service] [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.XomToStringConverter] is ignored. It seems to rely on a class that is not available in the class loader: nu/xom/Document
+2026-03-03T14:43:41.497+07:00  INFO 14372 --- [book-service] [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.InputStreamToXomConverter] is ignored. It seems to rely on a class that is not available in the class loader: nu/xom/ParsingException
+2026-03-03T14:43:42.827+07:00  INFO 14372 --- [book-service] [main] o.a.config.AxonIQConsoleModule           : 
+################################################################################################
+## You have not configured AxonIQ Console. AxonIQ Console provides out-of-the box monitoring  ##
+## and management capabilities for your Axon Application, starting with it is free.           ##
+## Visit https://console.axoniq.io for more information!                                      ##
+## Suppress this message by setting system property disable-axoniq-console-message to true.   ##
+################################################################################################
+
+2026-03-03T14:43:44.199+07:00  INFO 14372 --- [book-service] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-03T14:43:46.067+07:00  WARN 14372 --- [book-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-03T14:43:48.590+07:00  WARN 14372 --- [book-service] [main] o.s.b.f.a.FreeMarkerAutoConfiguration    : Cannot find template location: [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.check-template-location=false)
+2026-03-03T14:43:48.638+07:00  INFO 14372 --- [book-service] [main] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookdb'
+2026-03-03T14:43:49.212+07:00  INFO 14372 --- [book-service] [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestClient.
+2026-03-03T14:43:49.865+07:00  WARN 14372 --- [book-service] [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-03-03T14:43:50.556+07:00  INFO 14372 --- [book-service] [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-03-03T14:43:51.381+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-03-03T14:43:51.471+07:00  INFO 14372 --- [book-service] [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-03-03T14:43:51.615+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-03-03T14:43:51.724+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-03-03T14:43:51.780+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-03-03T14:43:51.921+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-03-03T14:43:51.998+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-03-03T14:43:52.029+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-03-03T14:43:52.073+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-03-03T14:43:54.956+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-03-03T14:43:54.963+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-03-03T14:43:54.976+07:00  INFO 14372 --- [book-service] [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-03-03T14:43:54.986+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1772523834983 with initial instances count: 0
+2026-03-03T14:43:55.054+07:00  INFO 14372 --- [book-service] [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application BOOK-SERVICE with eureka with status UP
+2026-03-03T14:43:55.082+07:00  INFO 14372 --- [book-service] [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1772523835082, current=UP, previous=STARTING]
+2026-03-03T14:43:55.095+07:00  INFO 14372 --- [book-service] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BOOK-SERVICE/DESKTOP-7P3SA93.mshome.net:book-service:9001: registering service...
+2026-03-03T14:43:55.231+07:00  INFO 14372 --- [book-service] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 9001 (http) with context path '/'
+2026-03-03T14:43:55.235+07:00  INFO 14372 --- [book-service] [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2026-03-03T14:43:55.325+07:00  WARN 14372 --- [book-service] [main] o.a.e.t.inmemory.InMemoryTokenStore      : An in memory token store is being created.
+This means the event processor using this token store might process the same events again when the application is restarted.
+If the use of an in memory token store is intentional, this warning can be ignored.
+If the tokens should be persisted, use the JPA, JDBC or MongoDB token store instead.
+2026-03-03T14:43:55.935+07:00  INFO 14372 --- [book-service] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BOOK-SERVICE/DESKTOP-7P3SA93.mshome.net:book-service:9001 - registration status: 204
+2026-03-03T14:43:57.132+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.impl.AxonServerManagedChannel    : Requesting connection details from localhost:8124
+2026-03-03T14:43:59.179+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.impl.AxonServerManagedChannel    : Successfully connected to localhost:8124
+2026-03-03T14:43:59.223+07:00  INFO 14372 --- [book-service] [main] i.a.a.connector.impl.ControlChannelImpl  : Connected instruction stream for context 'default'. Sending client identification
+2026-03-03T14:43:59.269+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : CommandChannel for context 'default' connected, 0 command handlers registered
+2026-03-03T14:43:59.275+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.bookservice.command.command.DeleteBookCommand' in context 'default'
+2026-03-03T14:43:59.284+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.commonservice.command.RollBackStatusBookCommand' in context 'default'
+2026-03-03T14:43:59.286+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.bookservice.command.command.CreateBookCommand' in context 'default'
+2026-03-03T14:43:59.287+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.commonservice.command.UpdateStatusBookCommand' in context 'default'
+2026-03-03T14:43:59.289+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.nvminh162.bookservice.command.command.UpdateBookCommand' in context 'default'
+2026-03-03T14:43:59.580+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.query.impl.QueryChannelImpl      : QueryChannel for context 'default' connected, 0 registrations resubscribed
+2026-03-03T14:43:59.606+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.query.impl.QueryChannelImpl      : Registered handler for query 'com.nvminh162.commonservice.queries.GetBookDetailQuery : com.nvminh162.commonservice.model.BookResponseCommonModel' in context 'default'
+2026-03-03T14:43:59.612+07:00  INFO 14372 --- [book-service] [main] i.a.a.c.query.impl.QueryChannelImpl      : Registered handler for query 'com.nvminh162.bookservice.query.queries.GetAllBookQuery : java.util.List<com.nvminh162.commonservice.model.BookResponseCommonModel>' in context 'default'
+2026-03-03T14:43:59.804+07:00  INFO 14372 --- [book-service] [EventProcessor[com.nvminh162.bookservice.command.event]-0] o.a.e.TrackingEventProcessor             : Worker assigned to segment Segment[0/0] for processing
+2026-03-03T14:43:59.844+07:00  INFO 14372 --- [book-service] [main] c.n.bookservice.BookServiceApplication   : Started BookServiceApplication in 59.777 seconds (process running for 61.064)
+2026-03-03T14:43:59.928+07:00  INFO 14372 --- [book-service] [EventProcessor[com.nvminh162.bookservice.command.event]-0] o.a.e.TrackingEventProcessor             : Using current Thread for last segment worker: TrackingSegmentWorker{processor=com.nvminh162.bookservice.command.event, segment=Segment[0/0]}
+2026-03-03T14:43:59.932+07:00  INFO 14372 --- [book-service] [EventProcessor[com.nvminh162.bookservice.command.event]-0] o.a.e.TrackingEventProcessor             : Fetched token: ReplayToken{currentToken=null, tokenAtReset=IndexTrackingToken{globalIndex=11}, context=null} for segment: Segment[0/0]
+2026-03-03T14:44:24.969+07:00  INFO 14372 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-03-03T14:44:24.969+07:00  INFO 14372 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-03-03T14:44:24.971+07:00  INFO 14372 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-03-03T14:44:24.971+07:00  INFO 14372 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-03-03T14:44:24.971+07:00  INFO 14372 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-03-03T14:44:24.972+07:00  INFO 14372 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2026-03-03T14:44:24.972+07:00  INFO 14372 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-03-03T14:44:25.008+07:00  INFO 14372 --- [book-service] [DiscoveryClient-CacheRefreshExecutor-%d] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-03-03T14:48:52.108+07:00  INFO 14372 --- [book-service] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-03-03T14:53:52.118+07:00  INFO 14372 --- [book-service] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-03-03T14:58:52.131+07:00  INFO 14372 --- [book-service] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration

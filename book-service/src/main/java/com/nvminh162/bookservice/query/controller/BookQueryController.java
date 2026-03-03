@@ -7,6 +7,8 @@ import com.nvminh162.commonservice.queries.GetBookDetailQuery;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,7 @@ import java.util.List;
 @RequestMapping("/api/v1/books")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
+@Slf4j
 public class BookQueryController {
 
     QueryGateway queryGateway;
@@ -28,6 +31,7 @@ public class BookQueryController {
     public List<BookResponseCommonModel> getAllBooks() {
         GetAllBookQuery query = new GetAllBookQuery();
         List<BookResponseCommonModel> books = queryGateway.query(query, ResponseTypes.multipleInstancesOf(BookResponseCommonModel.class)).join();
+        log.info(">>> GET ALL BOOKS: {}", books.toString());
         return books;
     }
 
