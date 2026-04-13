@@ -1,4 +1,4 @@
-# Library Management System - CQRS & Saga pattern architecture application
+# Library Management System - CQRS & Saga pattern architecture
 
 A comprehensive microservices-based library management system built with Java Spring Boot, demonstrating modern architectural patterns and cloud-native technologies.
 
